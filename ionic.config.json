@@ -1,5 +1,7 @@
 {
   "name": "android-sms",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
