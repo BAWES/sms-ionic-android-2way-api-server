@@ -27,6 +27,7 @@
     "cordova-android": "^8.1.0",
     "cordova-plugin-insomnia": "git+https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin.git",
     "cordova-plugin-sms-receive": "^1.0.2",
+    "cordova-sms-plugin": "^1.0.0",
     "core-js": "^2.5.4",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
@@ -76,7 +77,8 @@
       },
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-sms-receive": {},
-      "cordova-plugin-insomnia": {}
+      "cordova-plugin-insomnia": {},
+      "cordova-sms-plugin": {}
     },
     "platforms": [
       "android"

@@ -14,7 +14,7 @@
     <p>
       {{ textAddress ? textAddress : "Unavailable" }}
     </p>
-    
+
     <h1>
       Message Content: 
     </h1>
@@ -22,5 +22,7 @@
       {{ textBody ? textBody : "Unavailable" }}
     </p>
 
+    <ion-button (click)="permission()">Request SMS Send Permission</ion-button>
+    <ion-button (click)="sendSmsMessage()">Send Text Message</ion-button>
   </div>
 </ion-content>

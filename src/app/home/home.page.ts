@@ -30,4 +30,13 @@ export class HomePage {
     });
   }
 
+
+  sendSmsMessage(){
+    this.smsService.sendSmsMessage("+96551113111", "Testing, please reply if you received");
+  }
+
+  permission(){
+    this.smsService.requestSmsSendPermission();
+  }
+
 }
