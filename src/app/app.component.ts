@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+declare var window: any;
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -16,7 +16,7 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private smsService: SmsService
+    private smsService: SmsService,
   ) {
     this.initializeApp();
   }
@@ -26,6 +26,9 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.smsService.initialize();
+
+      // Insomnia [keep awake]
+      window.plugins.insomnia.keepAwake();
     });
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { SmsService } from '../service/sms.service';
 import { Events } from '@ionic/angular';
 
@@ -14,16 +14,19 @@ export class HomePage {
 
   constructor(
     public events: Events,
-    private smsService: SmsService
+    private smsService: SmsService,
+    private _ngZone: NgZone
   ) {
     // Start listening for sms messages
     this.smsService.startListening();
 
     // Wait for event of new sms message received
     this.events.subscribe("smsArrived", (phoneNumber, textMessage) => {
-      alert(textMessage + " from " + phoneNumber);
-      this.textAddress = phoneNumber;
-      this.textBody = textMessage;
+      // alert(textMessage + " from " + phoneNumber);
+      this._ngZone.run(() => {
+        this.textAddress = phoneNumber;
+        this.textBody = textMessage;
+      });
     });
   }
 
