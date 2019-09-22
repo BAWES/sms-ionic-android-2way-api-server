@@ -1,6 +1,7 @@
 import { Component, NgZone } from '@angular/core';
 import { SmsService } from '../service/sms.service';
-import { Events } from '@ionic/angular';
+import { Events, ToastController } from '@ionic/angular';
+import { ApiService } from '../service/api.service';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,9 @@ export class HomePage {
   constructor(
     public events: Events,
     private smsService: SmsService,
-    private _ngZone: NgZone
+    private apiService: ApiService,
+    private _ngZone: NgZone,
+    public toastController: ToastController
   ) {
     // Start listening for sms messages
     this.smsService.startListening();
@@ -26,8 +29,22 @@ export class HomePage {
       this._ngZone.run(() => {
         this.textAddress = phoneNumber;
         this.textBody = textMessage;
+
+        // Send API Request to store this text message
+        this.apiService.addSmsToBackend(phoneNumber, textMessage).subscribe((resp) => {
+          this._showToast(JSON.stringify(resp.body));
+        });
       });
     });
+  }
+
+
+  async _showToast(msg){
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 2000
+    });
+    toast.present();
   }
 
 

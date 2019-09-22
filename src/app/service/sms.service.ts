@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Events } from '@ionic/angular';
+import { Events, ToastController } from '@ionic/angular';
 
 declare var SMSReceive: any;
 declare var sms: any;
@@ -9,7 +9,7 @@ declare var sms: any;
 })
 export class SmsService {
 
-  constructor(public events: Events) {
+  constructor(public events: Events, public toastCtrl: ToastController) {
    }
 
    initialize(){
