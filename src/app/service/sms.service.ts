@@ -81,8 +81,12 @@ export class SmsService {
       }
     };
 
-    var success = function () { alert('Message sent successfully'); };
-    var error = function (e) { alert('Message Failed:' + e); };
+    var success = function () { 
+      console.log('Message sent successfully'); 
+    };
+    var error = function (e) { 
+      console.log('Message Failed:' + e); 
+    };
     sms.send(number, message, options, success, error);
 
   }
