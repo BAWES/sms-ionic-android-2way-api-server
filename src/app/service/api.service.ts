@@ -26,4 +26,15 @@ export class ApiService {
 
     return this.http.post(url, params, { observe: 'response' });
   }
+
+  /**
+   * Poll for messages to send
+   * @returns {Observable<any>}
+   */
+  pollForMessageToSend(){
+    const url = 'https://smsapi.yo3an.io/v1/sms/poll';
+    let params = {
+    };
+    return this.http.post(url, params, { observe: 'response' });
+  }
 }
