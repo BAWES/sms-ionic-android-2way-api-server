@@ -13,12 +13,12 @@ export class ApiService {
 
   /**
    * Sends sms message to backend for storage and processing
-   * @param phone 
-   * @param message 
+   * @param phone
+   * @param message
    * @returns {Observable<any>}
    */
   addSmsToBackend(phone: string, message: string): Observable<any> {
-    const url = 'https://smsapi.yo3an.io/v1/sms';
+    const url = 'https://api.plugn.io/v1/sms';
     let params = {
       'phone': phone,
       'message': message
@@ -32,7 +32,7 @@ export class ApiService {
    * @returns {Observable<any>}
    */
   pollForMessageToSend(){
-    const url = 'https://smsapi.yo3an.io/v1/sms/poll';
+    const url = 'https://api.plugn.io/v1/sms/poll';
     let params = {
     };
     return this.http.post(url, params, { observe: 'response' });
